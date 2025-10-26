@@ -88,15 +88,15 @@ class LoraArguments:
             )
         },
     )
-    lora_parameters: Optional[str] = field(  
-        default=None,  
-        metadata={  
-            "help": (  
-                "Name(s) of nn.Parameters to apply LoRA directly. "  
-                "Use commas to separate multiple parameters. "  
-                "Useful for MoE models with expert parameters."  
-            )  
-        },  
+    lora_parameters: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "Name(s) of nn.Parameters to apply LoRA directly. "
+                "Use commas to separate multiple parameters. "
+                "Useful for MoE models with expert parameters."
+            )
+        },
     )
     loraplus_lr_ratio: Optional[float] = field(
         default=None,

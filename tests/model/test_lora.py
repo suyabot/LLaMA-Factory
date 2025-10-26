@@ -91,16 +91,18 @@ def test_lora_train_new_adapters():
     compare_model(
         model, ref_model, diff_keys=["q_proj", "k_proj", "v_proj", "o_proj", "up_proj", "gate_proj", "down_proj"]
     )
-    
-def test_lora_parameters():  
-    model = load_train_model(lora_parameters="q_proj.weight, k_proj.weight", **TRAIN_ARGS)  
-    _, injected_parameters, _ = check_lora_model(model)   
+
+
+def test_lora_parameters():
+    model = load_train_model(lora_parameters="q_proj.weight, k_proj.weight", **TRAIN_ARGS)
+    _, injected_parameters, _ = check_lora_model(model)
     assert injected_parameters == {"q_proj.weight", "k_proj.weight"}
-    
-def test_lora_target_and_parameters_conflicts():  
-    model = load_train_model(lora_parameters="q_proj.weight",lora_target="q_proj,v_proj", **TRAIN_ARGS)  
-    linear_modules, injected_parameters, _ = check_lora_model(model) 
-    assert injected_parameters == {"q_proj.weight", "v_proj.weight"}  
+
+
+def test_lora_target_and_parameters_conflicts():
+    model = load_train_model(lora_parameters="q_proj.weight", lora_target="q_proj,v_proj", **TRAIN_ARGS)
+    linear_modules, injected_parameters, _ = check_lora_model(model)
+    assert injected_parameters == {"q_proj.weight", "v_proj.weight"}
     assert linear_modules == {"q_proj", "v_proj"}
 
 

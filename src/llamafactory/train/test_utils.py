@@ -66,6 +66,7 @@ def check_lora_model(model: "LoraModel") -> tuple[set[str], set[str]]:
 
     return linear_modules, linear_parameters, extra_modules
 
+
 def load_train_model(add_valuehead: bool = False, **kwargs) -> "PreTrainedModel":
     model_args, _, _, finetuning_args, _ = get_train_args(kwargs)
     tokenizer = load_tokenizer(model_args)["tokenizer"]
